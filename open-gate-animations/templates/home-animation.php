@@ -67,9 +67,7 @@
         <!-- Video section -->
         <div class="oga-video-section" style="position: relative; width: 100%; max-width: 72rem; flex: 1; margin-top: 1.5rem; margin-bottom: 1rem; border-radius: 0.5rem; overflow: hidden;">
             <!-- Video thumbnail -->
-            <div style="width: 100%; height: 100%; background: linear-gradient(to bottom right, #262626, #171717); display: flex; align-items: center; justify-content: center;">
-                <span style="color: #525252; font-size: 0.875rem;">Video Thumbnail</span>
-            </div>
+            <div style="width: 100%; height: 100%; background: linear-gradient(to bottom right, #262626, #171717);"></div>
             <!-- Play button -->
             <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
                 <div style="width: 6rem; height: 6rem; background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(4px); border-radius: 9999px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.2); transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='rgba(0,0,0,0.4)'" onmouseout="this.style.backgroundColor='rgba(0,0,0,0.3)'">

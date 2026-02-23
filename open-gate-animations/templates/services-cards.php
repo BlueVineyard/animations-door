@@ -86,16 +86,6 @@ if (empty($services)) {
                 <?php endforeach; ?>
             </div>
         </div>
-
-        <!-- Next section - scrollable after all cards revealed -->
-        <div style="min-height: 100vh; background-color: #171717; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem;">
-            <h2 style="font-size: 2.25rem; font-weight: 700; color: white; letter-spacing: -0.025em; text-align: center;">
-                Ready for more?
-            </h2>
-            <p style="margin-top: 1.5rem; color: #a3a3a3; font-size: 1.125rem; max-width: 42rem; text-align: center; line-height: 1.625;">
-                This section scrolls naturally after all service cards have been revealed.
-            </p>
-        </div>
     </div>
 </div>
 
