@@ -1,10 +1,12 @@
 # Open Gate Animations - WordPress Plugin
 
-A complete WordPress plugin that provides 4 stunning scroll-based animations converted from the Next.js animations-door repository.
+A complete WordPress plugin that provides 4 stunning scroll-based animations with dynamic content management.
 
 ## 🎬 Overview
 
 This plugin brings high-performance, scroll-based animations to WordPress with zero dependencies. All animations use vanilla JavaScript with `requestAnimationFrame` for smooth 60fps performance.
+
+**NEW in v1.1.0:** Dynamic content management with Custom Post Types and Settings Pages!
 
 ## ✨ Features
 
@@ -14,6 +16,14 @@ This plugin brings high-performance, scroll-based animations to WordPress with z
 2. **About Spread** - Diagonal image spread on scroll
 3. **Services Cards** - Sequential card reveal with stacking
 4. **Approach Timeline** - Progress timeline with scroll tracking
+
+### Dynamic Content Management (NEW!)
+
+- 🎛️ **Settings Page** - Configure Home & About animations from WordPress admin
+- 📝 **Custom Post Types** - Add/edit/remove Service Cards and Approach Steps
+- 🖼️ **Media Library Integration** - Upload and manage images easily
+- ⚙️ **Flexible Configuration** - Override settings with shortcode attributes
+- 🔄 **Backward Compatible** - Works with or without dynamic content
 
 ### Technical Highlights
 
@@ -30,6 +40,7 @@ This plugin brings high-performance, scroll-based animations to WordPress with z
 open-gate-animations/
 ├── open-gate-animations.php    # Main plugin file
 ├── README.md                   # This file
+├── DYNAMIC-FEATURES.md         # Dynamic features guide (NEW!)
 ├── README.txt                  # WordPress plugin readme
 ├── INSTALLATION.md             # Installation instructions
 ├── USAGE.md                    # Usage examples
@@ -37,14 +48,19 @@ open-gate-animations/
 ├── demo.html                   # Demo preview page
 ├── assets/
 │   ├── css/
-│   │   └── animations.css      # Main stylesheet
+│   │   ├── animations.css      # Main stylesheet
+│   │   └── admin-settings.css  # Admin styles (NEW!)
 │   ├── js/
 │   │   ├── home-animation.js
 │   │   ├── about-spread.js
 │   │   ├── services-cards.js
-│   │   └── approach-timeline.js
+│   │   ├── approach-timeline.js
+│   │   └── admin-settings.js   # Admin JavaScript (NEW!)
 │   └── images/                 # Place your images here
-├── includes/                   # PHP helpers (reserved)
+├── includes/                   # PHP helpers
+│   ├── cpt-service-cards.php   # Service Cards CPT (NEW!)
+│   ├── cpt-approach-steps.php  # Approach Steps CPT (NEW!)
+│   └── admin-settings.php      # Settings page (NEW!)
 └── templates/
     ├── home-animation.php
     ├── about-spread.php
@@ -66,7 +82,14 @@ open-gate-animations/
    Plugins → Installed Plugins → Activate "Open Gate Animations"
    ```
 
-3. Add shortcodes to your pages:
+3. Configure dynamic content (NEW in v1.1.0):
+   ```
+   Animations → Settings (configure defaults)
+   Animations → Service Cards (add services)
+   Animations → Approach Steps (add timeline steps)
+   ```
+
+4. Add shortcodes to your pages:
    ```
    [oga_home_animation]
    [oga_about_spread]
@@ -91,8 +114,49 @@ open-gate-animations/
   image3="/path/to/image3.jpg"]
 ```
 
+## 🎛️ Dynamic Content Management (v1.1.0)
+
+### Settings Page
+
+Configure default values for animations from **Animations → Settings**:
+
+**Home Animation Tab:**
+- Main Title
+- Highlight Text
+- Subtitle
+- Call-to-Action Button
+
+**About Animation Tab:**
+- Title
+- Description
+- Call-to-Action Button
+- 3 Images (with media library upload)
+
+### Custom Post Types
+
+**Service Cards** (`Animations → Service Cards`)
+- Add unlimited service cards
+- Custom fields: Number, Description
+- Featured image support
+- Drag & drop ordering
+
+**Approach Steps** (`Animations → Approach Steps`)
+- Add unlimited timeline steps
+- Custom fields: Bold Part, Description
+- Featured image support
+- Drag & drop ordering
+
+**Benefits:**
+- No code editing required
+- Easy for clients to manage
+- Unlimited cards/steps (not limited to 4)
+- Visual media library integration
+
+See **[DYNAMIC-FEATURES.md](DYNAMIC-FEATURES.md)** for complete guide.
+
 ## 📚 Documentation
 
+- **[DYNAMIC-FEATURES.md](DYNAMIC-FEATURES.md)** - Dynamic content guide (NEW!)
 - **[INSTALLATION.md](INSTALLATION.md)** - Detailed installation guide
 - **[USAGE.md](USAGE.md)** - Complete usage examples and customization
 - **[CHANGELOG.md](CHANGELOG.md)** - Version history and updates
