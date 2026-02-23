@@ -1,0 +1,73 @@
+/**
+ * Open Gate Animations - Main Styles
+ * Version: 1.0.0
+ */
+
+/* Reset and base styles for animations */
+.oga-home-animation,
+.oga-about-spread,
+.oga-services-cards,
+.oga-approach-timeline {
+    box-sizing: border-box;
+}
+
+.oga-home-animation *,
+.oga-about-spread *,
+.oga-services-cards *,
+.oga-approach-timeline * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Smooth scrolling for better UX */
+.oga-scroll-area {
+    scroll-behavior: smooth;
+}
+
+/* Prevent text selection during animations */
+.oga-home-animation {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/* Ensure images don't have default spacing */
+.oga-home-animation img,
+.oga-about-spread img,
+.oga-services-cards img,
+.oga-approach-timeline img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Remove default button styles */
+.oga-home-animation button,
+.oga-about-spread button,
+.oga-services-cards button,
+.oga-approach-timeline button {
+    font-family: inherit;
+    border: none;
+    outline: none;
+}
+
+/* Utility classes */
+.oga-hidden {
+    display: none !important;
+}
+
+.oga-visible {
+    display: block !important;
+}
+
+/* Loading state */
+.oga-loading {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.oga-loaded {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
