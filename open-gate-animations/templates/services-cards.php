@@ -1,31 +1,37 @@
 <?php
-// Service cards data
-$services = array(
-    array(
-        'title' => "CORPORATE VIDEOS\nAND BRANDED FILMS",
-        'number' => '01',
-        'image' => OGA_PLUGIN_URL . 'assets/images/service-corporate.jpg',
-        'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
-    ),
-    array(
-        'title' => "CREATIVE AGENCY\nPARTNERSHIPS",
-        'number' => '02',
-        'image' => OGA_PLUGIN_URL . 'assets/images/service-agency.jpg',
-        'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
-    ),
-    array(
-        'title' => "SOCIAL & DIGITAL\nCONTENT",
-        'number' => '03',
-        'image' => OGA_PLUGIN_URL . 'assets/images/service-social.jpg',
-        'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
-    ),
-    array(
-        'title' => 'ANIMATION',
-        'number' => '04',
-        'image' => OGA_PLUGIN_URL . 'assets/images/service-animation.jpg',
-        'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
-    ),
-);
+// Get service cards from Custom Post Type
+// Falls back to hardcoded data if no CPT entries exist
+$services = oga_get_service_cards();
+
+// Fallback to default data if no services found
+if (empty($services)) {
+    $services = array(
+        array(
+            'title' => "CORPORATE VIDEOS\nAND BRANDED FILMS",
+            'number' => '01',
+            'image' => OGA_PLUGIN_URL . 'assets/images/service-corporate.jpg',
+            'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
+        ),
+        array(
+            'title' => "CREATIVE AGENCY\nPARTNERSHIPS",
+            'number' => '02',
+            'image' => OGA_PLUGIN_URL . 'assets/images/service-agency.jpg',
+            'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
+        ),
+        array(
+            'title' => "SOCIAL & DIGITAL\nCONTENT",
+            'number' => '03',
+            'image' => OGA_PLUGIN_URL . 'assets/images/service-social.jpg',
+            'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
+        ),
+        array(
+            'title' => 'ANIMATION',
+            'number' => '04',
+            'image' => OGA_PLUGIN_URL . 'assets/images/service-animation.jpg',
+            'description' => 'We dive deep into your brand, audience, and vision to uncover the story worth telling.',
+        ),
+    );
+}
 ?>
 
 <div class="oga-services-cards" style="height: 100vh; overflow: hidden; background-color: #0a0a0a;">

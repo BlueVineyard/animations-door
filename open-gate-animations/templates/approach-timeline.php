@@ -1,31 +1,37 @@
 <?php
-// Approach timeline data
-$steps = array(
-    array(
-        'title' => 'DISCOVER',
-        'boldPart' => 'WE DIVE DEEP INTO YOUR BRAND AND AUDIENCE, UNCOVER THE STORY WORTH ',
-        'description' => 'TELLING AND HELP YOU SHAPE YOUR VISION',
-        'image' => OGA_PLUGIN_URL . 'assets/images/approach-discover.jpg',
-    ),
-    array(
-        'title' => 'CREATE',
-        'boldPart' => 'FROM SCRIPTING AND PROJECT MANAGING LOGISTICS, THROUGH TO CREATIVE ',
-        'description' => 'ON-SET PRODUCTION, WE SHAPE COMPELLING VISUALS THAT EMOTIONALLY RESONATE.',
-        'image' => OGA_PLUGIN_URL . 'assets/images/approach-create.jpg',
-    ),
-    array(
-        'title' => 'REFINE',
-        'boldPart' => 'OUR POLISHED EDITING ELEVATES EVERY FRAME ',
-        'description' => 'AND ALIGNS WITH YOUR MESSAGE AND GOALS.',
-        'image' => OGA_PLUGIN_URL . 'assets/images/approach-refine.jpg',
-    ),
-    array(
-        'title' => 'DELIVER',
-        'boldPart' => 'HIGH-QUALITY ASSETS DELIVERED WITH PRECISION, READY TO MAKE AN ',
-        'description' => 'IMPACT ACROSS ANY PLATFORM.',
-        'image' => OGA_PLUGIN_URL . 'assets/images/approach-deliver.jpg',
-    ),
-);
+// Get approach steps from Custom Post Type
+// Falls back to hardcoded data if no CPT entries exist
+$steps = oga_get_approach_steps();
+
+// Fallback to default data if no steps found
+if (empty($steps)) {
+    $steps = array(
+        array(
+            'title' => 'DISCOVER',
+            'boldPart' => 'WE DIVE DEEP INTO YOUR BRAND AND AUDIENCE, UNCOVER THE STORY WORTH ',
+            'description' => 'TELLING AND HELP YOU SHAPE YOUR VISION',
+            'image' => OGA_PLUGIN_URL . 'assets/images/approach-discover.jpg',
+        ),
+        array(
+            'title' => 'CREATE',
+            'boldPart' => 'FROM SCRIPTING AND PROJECT MANAGING LOGISTICS, THROUGH TO CREATIVE ',
+            'description' => 'ON-SET PRODUCTION, WE SHAPE COMPELLING VISUALS THAT EMOTIONALLY RESONATE.',
+            'image' => OGA_PLUGIN_URL . 'assets/images/approach-create.jpg',
+        ),
+        array(
+            'title' => 'REFINE',
+            'boldPart' => 'OUR POLISHED EDITING ELEVATES EVERY FRAME ',
+            'description' => 'AND ALIGNS WITH YOUR MESSAGE AND GOALS.',
+            'image' => OGA_PLUGIN_URL . 'assets/images/approach-refine.jpg',
+        ),
+        array(
+            'title' => 'DELIVER',
+            'boldPart' => 'HIGH-QUALITY ASSETS DELIVERED WITH PRECISION, READY TO MAKE AN ',
+            'description' => 'IMPACT ACROSS ANY PLATFORM.',
+            'image' => OGA_PLUGIN_URL . 'assets/images/approach-deliver.jpg',
+        ),
+    );
+}
 ?>
 
 <div class="oga-approach-timeline" style="height: 100vh; overflow-y: auto; background-color: #0a0a0a;">

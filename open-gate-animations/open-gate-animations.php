@@ -17,9 +17,14 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('OGA_VERSION', '1.0.0');
+define('OGA_VERSION', '1.1.0');
 define('OGA_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('OGA_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+// Include CPT and admin files
+require_once OGA_PLUGIN_DIR . 'includes/cpt-service-cards.php';
+require_once OGA_PLUGIN_DIR . 'includes/cpt-approach-steps.php';
+require_once OGA_PLUGIN_DIR . 'includes/admin-settings.php';
 
 /**
  * Enqueue plugin styles and scripts
@@ -54,12 +59,15 @@ function oga_enqueue_animation_script($animation_name) {
 function oga_home_animation_shortcode($atts) {
     oga_enqueue_animation_script('home-animation');
     
-    $atts = shortcode_atts(array(
-        'title' => 'CRAFTING',
-        'highlight' => 'VISUAL STORIES',
-        'subtitle' => 'That captivate, inspire, and drive results through compelling video production and creative direction.',
-        'cta' => 'START A PROJECT',
-    ), $atts);
+    // Get saved settings as defaults
+    $defaults = array(
+        'title' => get_option('oga_home_title', 'CRAFTING'),
+        'highlight' => get_option('oga_home_highlight', 'VISUAL STORIES'),
+        'subtitle' => get_option('oga_home_subtitle', 'That captivate, inspire, and drive results through compelling video production and creative direction.'),
+        'cta' => get_option('oga_home_cta', 'START A PROJECT'),
+    );
+    
+    $atts = shortcode_atts($defaults, $atts);
     
     ob_start();
     include OGA_PLUGIN_DIR . 'templates/home-animation.php';
@@ -73,14 +81,17 @@ add_shortcode('oga_home_animation', 'oga_home_animation_shortcode');
 function oga_about_spread_shortcode($atts) {
     oga_enqueue_animation_script('about-spread');
     
-    $atts = shortcode_atts(array(
-        'title' => 'ABOUT US',
-        'description' => 'We are a creative film production company specializing in visual storytelling.',
-        'cta' => 'LEARN MORE',
-        'image1' => OGA_PLUGIN_URL . 'assets/images/about-1.jpg',
-        'image2' => OGA_PLUGIN_URL . 'assets/images/about-2.jpg',
-        'image3' => OGA_PLUGIN_URL . 'assets/images/about-3.jpg',
-    ), $atts);
+    // Get saved settings as defaults
+    $defaults = array(
+        'title' => get_option('oga_about_title', 'ABOUT US'),
+        'description' => get_option('oga_about_description', 'We are a creative film production company specializing in visual storytelling.'),
+        'cta' => get_option('oga_about_cta', 'LEARN MORE'),
+        'image1' => get_option('oga_about_image_1', OGA_PLUGIN_URL . 'assets/images/about-1.jpg'),
+        'image2' => get_option('oga_about_image_2', OGA_PLUGIN_URL . 'assets/images/about-2.jpg'),
+        'image3' => get_option('oga_about_image_3', OGA_PLUGIN_URL . 'assets/images/about-3.jpg'),
+    );
+    
+    $atts = shortcode_atts($defaults, $atts);
     
     ob_start();
     include OGA_PLUGIN_DIR . 'templates/about-spread.php';

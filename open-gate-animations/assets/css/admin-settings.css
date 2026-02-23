@@ -1,0 +1,67 @@
+/**
+ * Admin Settings CSS
+ * Styles for the settings page
+ */
+
+.oga-settings-section {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.oga-settings-section h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.oga-shortcode-example {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 4px solid #2271b1;
+}
+
+.oga-shortcode-example h3 {
+    margin-top: 0;
+    font-size: 14px;
+}
+
+.oga-shortcode-example code {
+    display: block;
+    background: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: Consolas, Monaco, monospace;
+}
+
+.oga-image-upload {
+    margin: 10px 0;
+}
+
+.oga-image-upload .oga-preview-image {
+    display: block;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    padding: 5px;
+    background: #f9f9f9;
+}
+
+.oga-image-upload button {
+    margin-right: 10px;
+}
+
+/* Custom column styles */
+.column-featured_image img {
+    border-radius: 3px;
+}
+
+.column-service_number,
+.column-order {
+    text-align: center;
+    font-weight: bold;
+}
