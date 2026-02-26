@@ -221,14 +221,6 @@ export function ServicesCards() {
         <div className="h-screen flex flex-col px-5 md:px-10 lg:px-16 py-6 md:py-10 shrink-0">
           {/* Header */}
           <div className="flex items-start justify-between mb-6 md:mb-10">
-            <h1 className="text-white leading-[0.95] tracking-tight">
-              <span className="block text-3xl md:text-4xl lg:text-5xl font-light">
-                OUR
-              </span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold">
-                SERVICES
-              </span>
-            </h1>
           </div>
 
           {/* Stacking cards area */}
