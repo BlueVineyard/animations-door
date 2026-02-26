@@ -65,7 +65,7 @@ export function AboutSpread() {
   }
 
   return (
-    <div ref={scrollRef} className="h-screen overflow-y-auto bg-neutral-950">
+    <div ref={scrollRef} className="h-screen overflow-y-auto bg-[#181818]">
       <div ref={sectionRef} className="min-h-[250vh]">
         {/* Sticky section */}
         <div className="sticky top-0 h-screen overflow-hidden">

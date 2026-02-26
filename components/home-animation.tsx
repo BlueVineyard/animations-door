@@ -15,6 +15,7 @@ export function HomeAnimation() {
   const startTimeRef = useRef<number | null>(null)
   const isAnimatingRef = useRef(false)
   const progressRef = useRef(0)
+  const activeSectionRef = useRef<0 | 1>(0)
 
   useEffect(() => {
     isAnimatingRef.current = isAnimating
@@ -23,6 +24,10 @@ export function HomeAnimation() {
   useEffect(() => {
     progressRef.current = animationProgress
   }, [animationProgress])
+
+  useEffect(() => {
+    activeSectionRef.current = activeSection
+  }, [activeSection])
 
   const animateToSection = (targetSection: 0 | 1) => {
     if (isAnimatingRef.current) return
@@ -65,30 +70,44 @@ export function HomeAnimation() {
     animationRef.current = requestAnimationFrame(animate)
   }
 
-  const activeSectionRef = useRef<0 | 1>(0)
-  useEffect(() => {
-    activeSectionRef.current = activeSection
-  }, [activeSection])
-
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
 
+    // Check if the animation container is aligned with the viewport top
+    const isContainerActive = () => {
+      const rect = container.getBoundingClientRect()
+      return Math.abs(rect.top) < 15
+    }
+
     const handleWheel = (e: WheelEvent) => {
-      e.preventDefault()
-      if (isAnimatingRef.current) return
+      // During animation, always block scroll to prevent page jumping
+      if (isAnimatingRef.current) {
+        e.preventDefault()
+        return
+      }
+
+      // Only capture scroll when the container is snapped to viewport top
+      if (!isContainerActive()) return
 
       const direction = e.deltaY > 0 ? 1 : -1
 
       if (direction > 0 && activeSectionRef.current === 0) {
+        // Scroll down on section 0 → animate to section 1
+        e.preventDefault()
         animateToSection(1)
       } else if (direction < 0 && activeSectionRef.current === 1) {
+        // Scroll up on section 1 → animate back to section 0
+        e.preventDefault()
         animateToSection(0)
       }
+      // section 1 + scroll down → don't preventDefault → page scrolls naturally
+      // section 0 + scroll up → don't preventDefault → no-op at top of page
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isAnimatingRef.current) return
+      if (!isContainerActive()) return
 
       if (
         (e.key === "ArrowDown" || e.key === "PageDown" || e.key === " ") &&
@@ -111,11 +130,28 @@ export function HomeAnimation() {
     }
 
     const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault()
+      // Only block touch scrolling when the animation should capture input
+      if (isAnimatingRef.current) {
+        e.preventDefault()
+        return
+      }
+      if (!isContainerActive()) return
+
+      const touchCurrentY = e.touches[0].clientY
+      const diff = touchStartY - touchCurrentY
+
+      // Block if scrolling down on section 0, or scrolling up on section 1
+      if (
+        (diff > 0 && activeSectionRef.current === 0) ||
+        (diff < 0 && activeSectionRef.current === 1)
+      ) {
+        e.preventDefault()
+      }
     }
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (isAnimatingRef.current) return
+      if (!isContainerActive()) return
 
       const touchEndY = e.changedTouches[0].clientY
       const diff = touchStartY - touchEndY
@@ -129,18 +165,18 @@ export function HomeAnimation() {
       }
     }
 
-    container.addEventListener("wheel", handleWheel, { passive: false })
+    window.addEventListener("wheel", handleWheel, { passive: false })
+    window.addEventListener("keydown", handleKeyDown)
     container.addEventListener("touchstart", handleTouchStart, { passive: true })
     container.addEventListener("touchmove", handleTouchMove, { passive: false })
     container.addEventListener("touchend", handleTouchEnd, { passive: true })
-    window.addEventListener("keydown", handleKeyDown)
 
     return () => {
-      container.removeEventListener("wheel", handleWheel)
+      window.removeEventListener("wheel", handleWheel)
+      window.removeEventListener("keydown", handleKeyDown)
       container.removeEventListener("touchstart", handleTouchStart)
       container.removeEventListener("touchmove", handleTouchMove)
       container.removeEventListener("touchend", handleTouchEnd)
-      window.removeEventListener("keydown", handleKeyDown)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
@@ -149,29 +185,23 @@ export function HomeAnimation() {
 
   // Animation phases:
   // 0-0.4: Shape scales up (zoom effect)
-  // 0.4-0.7: Door closes (translateY)
+  // 0.4-0.7: Door closes
   // 0.7-1: Fade to black and reveal final state
-
   const shapeScaleProgress = Math.min(animationProgress / 0.4, 1)
   const doorCloseProgress = Math.max(0, Math.min((animationProgress - 0.4) / 0.3, 1))
   const fadeProgress = Math.max(0, Math.min((animationProgress - 0.7) / 0.3, 1))
 
-  // Shape scale: starts at 1, goes to ~50
   const shapeScale = 1 + shapeScaleProgress * 49
 
-  // Door close: translateY from 0 to meet in middle
-  const doorOffset = doorCloseProgress * 50 // percentage
-
-  // Background color transition
   const bgColor =
     animationProgress < 0.6
       ? `rgb(${255 - animationProgress * 200}, ${255 - animationProgress * 200}, ${255 - animationProgress * 200})`
-      : `rgb(${255 - 255 * Math.min(1, (animationProgress - 0.3) / 0.7)}, ${255 - 255 * Math.min(1, (animationProgress - 0.3) / 0.7)}, ${255 - 255 * Math.min(1, (animationProgress - 0.3) / 0.7)})`
+      : `rgb(${Math.round(255 - (255 - 24) * Math.min(1, (animationProgress - 0.3) / 0.7))}, ${Math.round(255 - (255 - 24) * Math.min(1, (animationProgress - 0.3) / 0.7))}, ${Math.round(255 - (255 - 24) * Math.min(1, (animationProgress - 0.3) / 0.7))})`
 
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 overflow-hidden cursor-default select-none"
+      className="relative h-screen overflow-hidden cursor-default select-none"
       style={{ backgroundColor: bgColor }}
     >
       {/* State 1: White background with OPEN [shape] GATE */}
@@ -204,7 +234,7 @@ export function HomeAnimation() {
           >
             {animationProgress < 0.4 && (
               <div
-                className={"relative"}
+                className="relative"
                 style={{
                   transformStyle: "preserve-3d",
                   width: "120px",
@@ -275,14 +305,13 @@ export function HomeAnimation() {
           pointerEvents: activeSection === 1 && !isAnimating ? "auto" : "none",
         }}
       >
-        {/* Text section - starts toward center, animates upward into position */}
+        {/* Text section */}
         <div
           className="relative z-10"
           style={{
             transform: `translateY(${(1 - fadeProgress) * 30}vh)`,
           }}
         >
-          {/* Main heading - OPEN GATE at top */}
           <h1 className="text-[14vw] md:text-[12vw] lg:text-[10vw] font-bold tracking-tight text-white leading-none text-center">
             OPEN GATE
           </h1>
@@ -316,18 +345,16 @@ export function HomeAnimation() {
           </div>
         </div>
 
-        {/* Large video thumbnail below - starts toward center, animates downward into position */}
+        {/* Large video thumbnail */}
         <div
           className="relative w-full max-w-6xl flex-1 mt-4 md:mt-6 mb-4 rounded-lg overflow-hidden"
           style={{
             transform: `translateY(${(1 - fadeProgress) * -20}vh)`,
           }}
         >
-          {/* Placeholder for video thumbnail */}
           <div className="w-full h-full bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
             <span className="text-neutral-600 text-sm">Video Thumbnail</span>
           </div>
-          {/* Play button overlay */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-black/30 backdrop-blur-sm rounded-full flex items-center justify-center cursor-pointer hover:bg-black/40 transition-colors border border-white/20">
               <svg
@@ -343,7 +370,7 @@ export function HomeAnimation() {
       </div>
 
       {/* Progress dots */}
-      <div className="fixed top-8 right-8 z-20 flex flex-col gap-2">
+      <div className="absolute top-8 right-8 z-20 flex flex-col gap-2">
         <div
           className={cn(
             "h-2 w-2 rounded-full transition-all duration-300",

@@ -209,7 +209,7 @@ export function ServicesCards() {
   }
 
   return (
-    <div ref={containerRef} className="h-screen overflow-hidden bg-neutral-950">
+    <div ref={containerRef} className="h-screen overflow-hidden bg-[#181818]">
       <div
         ref={scrollAreaRef}
         className="h-full"
@@ -221,14 +221,6 @@ export function ServicesCards() {
         <div className="h-screen flex flex-col px-5 md:px-10 lg:px-16 py-6 md:py-10 shrink-0">
           {/* Header */}
           <div className="flex items-start justify-between mb-6 md:mb-10">
-            <h1 className="text-white leading-[0.95] tracking-tight">
-              <span className="block text-3xl md:text-4xl lg:text-5xl font-light">
-                OUR
-              </span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold">
-                SERVICES
-              </span>
-            </h1>
           </div>
 
           {/* Stacking cards area */}
@@ -306,7 +298,7 @@ export function ServicesCards() {
         </div>
 
         {/* Next section - scrollable after all cards revealed */}
-        <div className="min-h-screen bg-neutral-900 flex flex-col items-center justify-center px-6 md:px-12 lg:px-20">
+        <div className="min-h-screen bg-[#181818] flex flex-col items-center justify-center px-6 md:px-12 lg:px-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight text-center">
             Another sample section
           </h2>

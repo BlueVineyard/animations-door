@@ -40,17 +40,11 @@ export function ApproachTimeline() {
   const timelineFill = scrollProgress
 
   return (
-    <div ref={scrollRef} className="h-screen overflow-y-auto bg-neutral-950">
+    <div ref={scrollRef} className="h-screen overflow-y-auto bg-[#181818]">
       <div ref={timelineRef} className="min-h-[400vh]">
         {/* Sticky container that stays in view */}
         <div className="sticky top-0 h-screen overflow-hidden">
           <div className="h-full flex flex-col px-6 md:px-12 lg:px-20 py-2 md:py-3">
-            {/* Header */}
-            <div className="flex items-start justify-between mb-2 md:mb-3">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[0.95] tracking-tight">
-                OUR<br />APPROACH
-              </h1>
-            </div>
 
             {/* Timeline content: Images | Timeline | Descriptions */}
             <div className="flex-1 flex gap-0 min-h-0">
@@ -163,33 +157,12 @@ export function ApproachTimeline() {
                 })}
               </div>
             </div>
-
-            {/* Bottom button */}
-            <div className="flex justify-center mt-1.5 md:mt-2">
-              <button className="flex items-center gap-2 px-6 py-3 border border-neutral-600 rounded-full text-neutral-400 text-xs md:text-sm tracking-widest hover:bg-neutral-800 hover:text-white transition-colors">
-                VIEW ABOUT US
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx="12" cy="12" r="10" strokeWidth={1.5} />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 8v8m-4-4h8"
-                  />
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Another sample section - scrolls normally after timeline */}
-      <div className="min-h-screen bg-neutral-900 flex flex-col items-center justify-center px-6 md:px-12 lg:px-20">
+      <div className="min-h-screen bg-[#181818] flex flex-col items-center justify-center px-6 md:px-12 lg:px-20">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight text-center">
           Another sample section
         </h2>

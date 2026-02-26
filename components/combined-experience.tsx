@@ -259,7 +259,7 @@ export default function CombinedExperience() {
   const timelineFill = scrollProgress
 
   return (
-    <div ref={containerRef} className="h-screen overflow-hidden bg-neutral-950">
+    <div ref={containerRef} className="h-screen overflow-hidden bg-[#181818]">
       {/* Services Section */}
       <div
         ref={servicesRef}
@@ -270,10 +270,6 @@ export default function CombinedExperience() {
       >
         <div className="h-screen flex flex-col px-5 md:px-10 lg:px-16 py-6 md:py-10">
           <div className="flex items-start justify-between mb-6 md:mb-10">
-            <h1 className="text-white leading-[0.95] tracking-tight">
-              <span className="block text-3xl md:text-4xl lg:text-5xl font-light">OUR</span>
-              <span className="block text-4xl md:text-5xl lg:text-6xl font-bold">SERVICES</span>
-            </h1>
           </div>
 
           <div className="relative flex-1">
@@ -333,17 +329,11 @@ export default function CombinedExperience() {
           transform: currentSection === "approach" ? "translateY(0)" : "translateY(100%)",
         }}
       >
-        <div ref={approachScrollRef} className="h-screen overflow-y-auto bg-neutral-950">
+        <div ref={approachScrollRef} className="h-screen overflow-y-auto bg-[#181818]">
           <div ref={timelineRef} className="min-h-[400vh]">
             <div className="sticky top-0 h-screen overflow-hidden">
-              <div className="h-full flex flex-col px-6 md:px-12 lg:px-20 py-2 md:py-3">
+              <div className="h-full flex flex-col px-6 md:px-12 lg:px-20 py-4 md:py-6">
                 <div className="flex items-start justify-between mb-2 md:mb-3">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[0.95] tracking-tight">
-                    OUR<br />APPROACH
-                  </h1>
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-teal-500 flex items-center justify-center text-white text-sm font-bold">
-                    OG
-                  </div>
                 </div>
 
                 <div className="flex-1 flex gap-0 min-h-0">
@@ -431,16 +421,6 @@ export default function CombinedExperience() {
                       )
                     })}
                   </div>
-                </div>
-
-                <div className="flex justify-center mt-1.5 md:mt-2">
-                  <button className="flex items-center gap-2 px-6 py-3 border border-neutral-600 rounded-full text-neutral-400 text-xs md:text-sm tracking-widest hover:bg-neutral-800 hover:text-white transition-colors">
-                    VIEW ABOUT US
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" strokeWidth={1.5} />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v8m-4-4h8" />
-                    </svg>
-                  </button>
                 </div>
               </div>
             </div>
