@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Gate Animations - Demo</title>
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .demo-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            position: relative;
+        }
+        
+        .demo-section h1 {
+            font-size: 3rem;
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .demo-section p {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+        
+        .animation-container {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Demo Navigation -->
+    <div class="demo-section">
+        <div>
+            <h1>Open Gate Animations Demo</h1>
+            <p>Scroll down to see each animation</p>
+        </div>
+    </div>
+
+    <!-- Animation 1: Home Animation -->
+    <div class="animation-container">
+        <?php 
+        // This would be the WordPress shortcode output
+        $atts = array(
+            'title' => 'CRAFTING',
+            'highlight' => 'VISUAL STORIES',
+            'cta' => 'START A PROJECT'
+        );
+        // include 'templates/home-animation.php';
+        ?>
+        <div style="height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <h2 style="font-size: 3rem; margin: 0;">Home Animation</h2>
+                <p style="margin-top: 1rem; opacity: 0.8;">Door opening effect with navigation</p>
+                <p style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-block;">
+                    Use shortcode: [oga_home_animation]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation 2: About Spread -->
+    <div class="animation-container">
+        <?php
+        // About spread shortcode
+        $atts = array(
+            'title' => 'ABOUT US',
+            'description' => 'We are a creative film production company.',
+            'cta' => 'LEARN MORE'
+        );
+        // include 'templates/about-spread.php';
+        ?>
+        <div style="height: 100vh; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <h2 style="font-size: 3rem; margin: 0;">About Spread</h2>
+                <p style="margin-top: 1rem; opacity: 0.8;">Scroll-driven image spread animation</p>
+                <p style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-block;">
+                    Use shortcode: [oga_about_spread]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation 3: Services Cards -->
+    <div class="animation-container">
+        <div style="height: 100vh; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <h2 style="font-size: 3rem; margin: 0;">Services Cards</h2>
+                <p style="margin-top: 1rem; opacity: 0.8;">Sequential card reveal with stacking</p>
+                <p style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-block;">
+                    Use shortcode: [oga_services_cards]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animation 4: Approach Timeline -->
+    <div class="animation-container">
+        <div style="height: 100vh; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; color: white;">
+                <h2 style="font-size: 3rem; margin: 0;">Approach Timeline</h2>
+                <p style="margin-top: 1rem; opacity: 0.8;">Timeline with scroll-based progression</p>
+                <p style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255,255,255,0.2); border-radius: 8px; display: inline-block;">
+                    Use shortcode: [oga_approach_timeline]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Installation Instructions -->
+    <div class="demo-section" style="background: #1a1a1a; color: white; min-height: 100vh; flex-direction: column;">
+        <div style="max-width: 800px; padding: 2rem;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Installation</h2>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                <h3 style="margin-top: 0;">1. Install Plugin</h3>
+                <p>Copy the <code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">open-gate-animations</code> folder to your WordPress plugins directory:</p>
+                <pre style="background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 4px; overflow-x: auto;">wp-content/plugins/open-gate-animations/</pre>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                <h3 style="margin-top: 0;">2. Activate</h3>
+                <p>Go to <strong>Plugins → Installed Plugins</strong> and activate "Open Gate Animations"</p>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                <h3 style="margin-top: 0;">3. Use Shortcodes</h3>
+                <p>Add animations to any page using shortcodes:</p>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 0.5rem 0;"><code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">[oga_home_animation]</code></li>
+                    <li style="margin: 0.5rem 0;"><code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">[oga_about_spread]</code></li>
+                    <li style="margin: 0.5rem 0;"><code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">[oga_services_cards]</code></li>
+                    <li style="margin: 0.5rem 0;"><code style="background: rgba(0,0,0,0.3); padding: 0.25rem 0.5rem; border-radius: 4px;">[oga_approach_timeline]</code></li>
+                </ul>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 8px;">
+                <h3 style="margin-top: 0;">Documentation</h3>
+                <ul>
+                    <li>See <strong>INSTALLATION.md</strong> for detailed setup instructions</li>
+                    <li>See <strong>USAGE.md</strong> for shortcode examples and customization</li>
+                    <li>See <strong>README.txt</strong> for plugin information</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="demo-section" style="background: #0a0a0a; color: white; height: auto; padding: 3rem 2rem;">
+        <div style="text-align: center;">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">Open Gate Animations</h3>
+            <p style="opacity: 0.6; margin-bottom: 2rem;">WordPress Plugin v1.0.0</p>
+            <p style="opacity: 0.4; font-size: 0.875rem;">
+                Converted from Next.js animations<br>
+                Original repository: animations-door<br>
+                &copy; 2024 Open Gate Creative
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
