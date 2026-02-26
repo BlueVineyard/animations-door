@@ -196,7 +196,7 @@ export function HomeAnimation() {
   const bgColor =
     animationProgress < 0.6
       ? `rgb(${255 - animationProgress * 200}, ${255 - animationProgress * 200}, ${255 - animationProgress * 200})`
-      : `rgb(${255 - 255 * Math.min(1, (animationProgress - 0.3) / 0.7)}, ${255 - 255 * Math.min(1, (animationProgress - 0.3) / 0.7)}, ${255 - 255 * Math.min(1, (animationProgress - 0.3) / 0.7)})`
+      : `rgb(${Math.round(255 - (255 - 24) * Math.min(1, (animationProgress - 0.3) / 0.7))}, ${Math.round(255 - (255 - 24) * Math.min(1, (animationProgress - 0.3) / 0.7))}, ${Math.round(255 - (255 - 24) * Math.min(1, (animationProgress - 0.3) / 0.7))})`
 
   return (
     <div

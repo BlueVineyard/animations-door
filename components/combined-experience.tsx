@@ -259,7 +259,7 @@ export default function CombinedExperience() {
   const timelineFill = scrollProgress
 
   return (
-    <div ref={containerRef} className="h-screen overflow-hidden bg-neutral-950">
+    <div ref={containerRef} className="h-screen overflow-hidden bg-[#181818]">
       {/* Services Section */}
       <div
         ref={servicesRef}
@@ -333,7 +333,7 @@ export default function CombinedExperience() {
           transform: currentSection === "approach" ? "translateY(0)" : "translateY(100%)",
         }}
       >
-        <div ref={approachScrollRef} className="h-screen overflow-y-auto bg-neutral-950">
+        <div ref={approachScrollRef} className="h-screen overflow-y-auto bg-[#181818]">
           <div ref={timelineRef} className="min-h-[400vh]">
             <div className="sticky top-0 h-screen overflow-hidden">
               <div className="h-full flex flex-col px-6 md:px-12 lg:px-20 py-2 md:py-3">

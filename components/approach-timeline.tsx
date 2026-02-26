@@ -40,7 +40,7 @@ export function ApproachTimeline() {
   const timelineFill = scrollProgress
 
   return (
-    <div ref={scrollRef} className="h-screen overflow-y-auto bg-neutral-950">
+    <div ref={scrollRef} className="h-screen overflow-y-auto bg-[#181818]">
       <div ref={timelineRef} className="min-h-[400vh]">
         {/* Sticky container that stays in view */}
         <div className="sticky top-0 h-screen overflow-hidden">
@@ -189,7 +189,7 @@ export function ApproachTimeline() {
       </div>
 
       {/* Another sample section - scrolls normally after timeline */}
-      <div className="min-h-screen bg-neutral-900 flex flex-col items-center justify-center px-6 md:px-12 lg:px-20">
+      <div className="min-h-screen bg-[#181818] flex flex-col items-center justify-center px-6 md:px-12 lg:px-20">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight text-center">
           Another sample section
         </h2>
